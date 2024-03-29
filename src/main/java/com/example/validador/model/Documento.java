@@ -14,7 +14,7 @@ public class Documento {
 
     private String incidentType;
 
-    private int daysLost;
+    private double daysLost;
 
     private String plant;
 
@@ -38,7 +38,7 @@ public class Documento {
 
     // Constructor
     public Documento(String date, String injuryLocation, String gender, String ageGroup, String incidentType,
-                     int daysLost, String plant, String reportType, String shift, String department, double incidentCost,
+                     double daysLost, String plant, String reportType, String shift, String department, double incidentCost,
                      String wkDay, String month, int year) {
         this.date = date;
         this.injuryLocation = injuryLocation;
@@ -97,7 +97,7 @@ public class Documento {
         this.incidentType = incidentType;
     }
 
-    public int getDaysLost() {
+    public double getDaysLost() {
         return daysLost;
     }
 
