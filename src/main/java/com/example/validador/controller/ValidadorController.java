@@ -24,7 +24,7 @@ public class ValidadorController {
   public ValidadorController(ValidadorService validadorService, WebClient.Builder webClientBuilder){
     this.validadorService = validadorService;
     this.webClientBuilder = webClientBuilder;
-    this.webClient = webClientBuilder.baseUrl("http://localhost/8080").build();
+    this.webClient = webClientBuilder.baseUrl("http://localhost/8081").build();
 
   }
 
@@ -44,7 +44,7 @@ public class ValidadorController {
 
     return webClientBuilder.build()
       .post()
-      .uri("http://localhost:8080/registros-validados")
+      .uri("http://localhost:8081/registros-validados")
       .bodyValue(registrosValidos)
       .retrieve()
       .bodyToMono(Void.class);

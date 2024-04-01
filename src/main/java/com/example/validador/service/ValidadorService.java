@@ -19,10 +19,12 @@ public class ValidadorService {
       List<Documento> registrosValidos = new ArrayList<>();
 
       for (Documento documento : documentos) {
-        if (esFechaValida(documento.getDate())) {
+          if (esFechaValida(documento.getDate()) &&
+                  esInjuryLocationValido(documento.getInjuryLocation()) &&
+                  esReportTypeValido(documento.getReportType())) {
 
-          registrosValidos.add(documento);
-        }
+              registrosValidos.add(documento);
+          }
       }
 
       return registrosValidos;
@@ -34,28 +36,16 @@ public class ValidadorService {
       return fecha.matches(fechaPattern);
     }
 
-      //metodo validar
-    private boolean esDecimalValido(double daysLost) {
-        //validar
-      return false;
+    // Método para validar el Injury Location
+    private boolean esInjuryLocationValido(String injuryLocation) {
+        return !injuryLocation.equals("N/A");
     }
 
-    // Método para validar el grupo de edad
-    private boolean esGrupoEdadValido(String ageGroup) {
-      // Implementa la lógica de validación del grupo de edad aquí
-      // Retorna true si el grupo de edad es válido, false en caso contrario
-        return false;
+    // Método para validar el Report Type
+    private boolean esReportTypeValido(String reportType) {
+        return reportType.equals("Near Miss") ||
+                reportType.equals("Lost Time") ||
+                reportType.equals("First Aid");
     }
-
-    // Método para validar el formato de correo electrónico
-    private boolean esCorreoValido(String email) {
-      if (email == null || email.isEmpty()) {
-        return false;
-      }
-      // Patrón para validar el correo electrónico
-      String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-      return Pattern.matches(emailPattern, email);
-    }
-
 
   }
